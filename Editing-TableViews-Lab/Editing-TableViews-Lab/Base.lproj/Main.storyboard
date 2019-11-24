@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Fac-IG-Yen" style="IBUITableViewCellStyleDefault" id="AlB-I1-so7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groceryCell" textLabel="Fac-IG-Yen" style="IBUITableViewCellStyleDefault" id="AlB-I1-so7">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AlB-I1-so7" id="xdY-83-IQI">
@@ -49,20 +49,24 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Grocery List" id="k8k-uB-nbi">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="qzv-D9-iz0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="qzv-D9-iz0">
+                            <connections>
+                                <action selector="editButton:" destination="BYZ-38-t0r" id="F9s-LA-KBU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="bnL-1w-hCJ">
                             <connections>
-                                <segue destination="3NW-iE-Uh4" kind="show" id="ahp-iy-zdr"/>
+                                <segue destination="3NW-iE-Uh4" kind="show" id="afq-9c-Lck"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="8nr-GM-E2W" id="Tep-22-s2R"/>
+                        <outlet property="tableView" destination="8nr-GM-E2W" id="A08-zJ-u26"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="112"/>
+            <point key="canvasLocation" x="735" y="112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xCq-Kh-GX3">
@@ -90,40 +94,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gx2-X9-TEg">
-                                <rect key="frame" x="8" y="437.5" width="398" height="21"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Pa-9f-O8X">
-                                <rect key="frame" x="8" y="466.5" width="398" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Pa-9f-O8X">
+                                <rect key="frame" x="8" y="429.5" width="398" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFz-3J-92V">
-                                <rect key="frame" x="188.5" y="520.5" width="37" height="30"/>
+                                <rect key="frame" x="188.5" y="486.5" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="Xbj-oi-aiI" kind="unwind" unwindAction="unwindWithSegue:" id="rQi-mC-hT6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Gx2-X9-TEg" firstAttribute="leading" secondItem="dYw-bl-hRK" secondAttribute="leading" constant="8" id="0Kl-fx-VZ0"/>
-                            <constraint firstItem="dYw-bl-hRK" firstAttribute="trailing" secondItem="Gx2-X9-TEg" secondAttribute="trailing" constant="8" id="16s-dc-Xtm"/>
                             <constraint firstItem="zFz-3J-92V" firstAttribute="centerX" secondItem="mSY-Yc-OjS" secondAttribute="centerX" id="1BO-aM-Mkk"/>
-                            <constraint firstItem="Gx2-X9-TEg" firstAttribute="centerY" secondItem="mSY-Yc-OjS" secondAttribute="centerY" id="79N-fd-Mvu"/>
-                            <constraint firstItem="2Pa-9f-O8X" firstAttribute="leading" secondItem="dYw-bl-hRK" secondAttribute="leading" constant="8" id="EGI-xP-Eff"/>
-                            <constraint firstItem="zFz-3J-92V" firstAttribute="top" secondItem="2Pa-9f-O8X" secondAttribute="bottom" constant="20" id="Iv4-NR-6SN"/>
-                            <constraint firstItem="2Pa-9f-O8X" firstAttribute="top" secondItem="Gx2-X9-TEg" secondAttribute="bottom" constant="8" id="aM6-EZ-EJe"/>
-                            <constraint firstItem="dYw-bl-hRK" firstAttribute="trailing" secondItem="2Pa-9f-O8X" secondAttribute="trailing" constant="8" id="cK7-JP-ShU"/>
+                            <constraint firstItem="dYw-bl-hRK" firstAttribute="trailing" secondItem="zFz-3J-92V" secondAttribute="trailing" constant="188.5" id="CCL-4f-8Nd"/>
+                            <constraint firstItem="dYw-bl-hRK" firstAttribute="trailing" secondItem="2Pa-9f-O8X" secondAttribute="trailing" constant="8" id="FMD-gP-Oab"/>
+                            <constraint firstItem="2Pa-9f-O8X" firstAttribute="centerY" secondItem="mSY-Yc-OjS" secondAttribute="centerY" id="KGc-fa-Nmk"/>
+                            <constraint firstItem="2Pa-9f-O8X" firstAttribute="leading" secondItem="dYw-bl-hRK" secondAttribute="leading" constant="8" id="SxD-5W-oPz"/>
+                            <constraint firstItem="zFz-3J-92V" firstAttribute="top" secondItem="2Pa-9f-O8X" secondAttribute="bottom" constant="20" id="ckd-Lx-XAC"/>
+                            <constraint firstItem="2Pa-9f-O8X" firstAttribute="centerX" secondItem="mSY-Yc-OjS" secondAttribute="centerX" id="g1Q-5e-c9L"/>
+                            <constraint firstItem="zFz-3J-92V" firstAttribute="leading" secondItem="dYw-bl-hRK" secondAttribute="leading" constant="188.5" id="mgJ-Mj-tG0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dYw-bl-hRK"/>
                     </view>
                     <navigationItem key="navigationItem" id="RbS-kv-R5g"/>
+                    <connections>
+                        <outlet property="textField" destination="2Pa-9f-O8X" id="krJ-Hu-pUZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yle-tx-jqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Xbj-oi-aiI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="112"/>
+            <point key="canvasLocation" x="1503" y="112"/>
         </scene>
     </scenes>
     <resources>

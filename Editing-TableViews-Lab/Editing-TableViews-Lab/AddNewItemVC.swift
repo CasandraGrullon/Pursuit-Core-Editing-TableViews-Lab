@@ -10,9 +10,25 @@ import UIKit
 
 class AddNewItemVC: UIViewController {
 
+    @IBOutlet weak var textField: UITextField!
+    
+    var newItem: GroceryItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
+        newItem = GroceryItem(name: "rice", wasPurchased: false)
     }
-
-
+} 
+extension AddNewItemVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        newItem?.name = textField.text ?? "rice"
+        newItem?.wasPurchased = false
+        
+        return true
+    }
+    
 }
